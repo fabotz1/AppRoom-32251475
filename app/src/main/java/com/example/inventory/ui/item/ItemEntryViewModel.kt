@@ -2,6 +2,16 @@
 /**
  * Represents Ui State for an Item.
  */
+import com.example.inventory.data.ItemsRepository
+
+class ItemEntryViewModel(private val itemsRepository: ItemsRepository) : ViewModel() {
+    suspend fun saveItem() {
+        if (validateInput()) {
+            itemsRepository.insertItem(itemUiState.itemDetails.toItem())
+        }
+    }
+}
+
 data class ItemUiState(
     val itemDetails: ItemDetails = ItemDetails(),
     val isEntryValid: Boolean = false
