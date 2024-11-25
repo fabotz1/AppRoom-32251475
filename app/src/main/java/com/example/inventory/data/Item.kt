@@ -20,7 +20,12 @@ package com.example.inventory.data
 /**
  * Entity data class represents a single row in the database.
  */
-class Item(
+import androidx.room.Entity
+
+@Entity(tableName = "items")
+
+data class Item(
+    @PrimaryKey
     val id: Int = 0,
     val name: String,
     val price: Double,
